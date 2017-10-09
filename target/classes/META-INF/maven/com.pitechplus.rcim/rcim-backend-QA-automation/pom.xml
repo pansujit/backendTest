@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.pitechplus.rcim</groupId>
+    <artifactId>rcim-backend-QA-automation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <spring.version>4.3.4.RELEASE</spring.version>
+        <spring.jpa.version>1.10.5.RELEASE</spring.jpa.version>
+        <hibernate.version>4.3.8.Final</hibernate.version>
+        <log4j.version>1.2.17</log4j.version>
+        <testng.version>6.9.13.6</testng.version>
+        <selenium.version>3.4.0</selenium.version>
+        <hamcrest.version>1.3</hamcrest.version>
+        <lombok.version>1.16.6</lombok.version>
+        <jackson-mapper.version>1.9.9</jackson-mapper.version>
+        <jackson-databind.version>2.6.3</jackson-databind.version>
+        <httpclient.version>4.4.1</httpclient.version>
+        <log4j-api.version>2.7</log4j-api.version>
+        <log4j-core.version>2.7</log4j-core.version>
+        <extentreports.version>2.41.2</extentreports.version>
+        <fairy.version>0.5.0</fairy.version>
+        <commons.version>3.3.2</commons.version>
+        <xmlapis.version>1.4.01</xmlapis.version>
+        <jcraft.version>0.1.54</jcraft.version>
+        <apache.poi.version>3.15</apache.poi.version>
+        <postgressql.driver.version>9.4-1200-jdbc41</postgressql.driver.version>
+        <microsoftsql.driver.version>6.1.0.jre8</microsoftsql.driver.version>
+        <mysql.driver.version>5.1.6</mysql.driver.version>
+        <ashot.version>1.4.12</ashot.version>
+        <collection.matchers.version>1.4.1</collection.matchers.version>
+        <libpath>${project.basedir}</libpath>
+    </properties>
+
+    <!-- <repositories> <repository> <id>my-local-repo</id> <url>file://${project.basedir}/lib</url>
+        </repository> </repositories> -->
+
+
+    <dependencies>
+        <dependency>
+            <groupId>uk.com.robust-it</groupId>
+            <artifactId>cloning</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+        <dependency> <groupId>com.pitechplus</groupId> <artifactId>qa-toolkit</artifactId>
+            <version>1.4.0</version> <scope>system</scope> <systemPath>${libpath}/lib/qa-toolkit-1.4.0.jar</systemPath>
+        </dependency>
+        <!--<dependency>
+            <groupId>com.pitechplus</groupId>
+            <artifactId>qa-toolkit</artifactId>
+            <version>1.4.0</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi - Microsoft
+            format files manipulation -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache.poi.version}</version>
+        </dependency>
+
+        <!--Selenium - UI tool for automating browsers (web applications) -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--Testng - test framework used for test execution and organization -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+        <!--Hamcrest - various matchers and possibility to create custom ones -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>${hamcrest.version}</version>
+        </dependency>
+        <!--Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--Contains Abstract spring class needed to run testng tests in spring
+            context-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--Database connectivity, modelling and querying -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.jpa.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/log4j/log4j - configured in order
+            to stop logging from spring and hibernate -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!--Hibernate - database config and querying -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!--Lombok - automatic generator for getters, setters, builders... -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!--Jackson - serialization deserialization JSON - Java Object -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson-mapper.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <!--Httpclient Needed for rest template and services implementation -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
+        <!--Log4j2 - main application logger. Used for extend reports and debugging
+            purposes. -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core.version}</version>
+        </dependency>
+        <!--Extentreports - testng results reporting -->
+        <dependency>
+            <groupId>com.relevantcodes</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreports.version}</version>
+        </dependency>
+        <!--Commons (used for random utils) -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+        <!--random generator (names, addresses, different stuff -->
+        <dependency>
+            <groupId>io.codearte.jfairy</groupId>
+            <artifactId>jfairy</artifactId>
+            <version>${fairy.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/xml-apis/xml-apis -->
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>${xmlapis.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.jcraft/jsch. Used for ssh2
+            connections -->
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>${jcraft.version}</version>
+        </dependency>
+        <!--Postgres sql jdbc driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgressql.driver.version}</version>
+        </dependency>
+        <!--Microsoft sql jdbc driver -->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>${microsoftsql.driver.version}</version>
+        </dependency>
+        <!--Mysql jdbc driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.driver.version}</version>
+        </dependency>
+        <!--Used for take page screenshot using scroll on page -->
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>${ashot.version}</version>
+        </dependency>
+        <!--Used for collection matchers -->
+        <dependency>
+            <groupId>ru.yandex.qatools.matchers</groupId>
+            <artifactId>collection-matchers</artifactId>
+            <version>${collection.matchers.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>qa-dev</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.19.1</version>
+                        <configuration>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>back-office-regression.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

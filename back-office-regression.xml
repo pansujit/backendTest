@@ -1,0 +1,105 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="backend_regression">
+
+    <test name="back-users-services">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.create.AddBackUserTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.create.AddBackUserNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.retrieve.GetAllBackUsersTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.retrieve.GetBackUserNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.retrieve.GetBackUserTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.update.UpdateBackUserTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.update.UpdateBackUserNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.suspend.SuspendBackUsersNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.suspend.SuspendBackUserTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.search.SearchBackUserTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.search.SearchBackUsersNegativeTests"/>
+        </classes>
+    </test>
+
+    <test name="login">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.login.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="company-services">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.create.AddSuperCompanyNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.create.AddSuperCompanyTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.retrieve.GetAllSuperCompaniesTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.retrieve.GetSuperCompanyTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.update.UpdateSuperCompanyTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.update.UpdateSuperCompanyNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.search.SearchSuperCompaniesNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.search.SearchSuperCompaniesTest"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.contract.ContractCreateTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.contract.ContractCreateNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.supercompany.contract.GetCurrentContractTests"/>
+        </classes>
+    </test>
+
+    <test name="sub-company-services">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.company.create.AddCompanyNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.company.create.AddCompanyTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.company.update.UpdateCompanyTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.company.update.UpdateCompanyNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.company.retrieve.GetCompanyTests"/>
+        </classes>
+    </test>
+
+    <test name="sites-services">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.site.create.CreateSiteTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.site.retrieve.GetSingleSiteTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.site.update.UpdateSiteTests"/>
+        </classes>
+    </test>
+
+    <test name="parking-services">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.parking.create.CreateParkingNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.parking.create.CreateParkingTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.parking.retrieve.GetParkingTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.parking.update.UpdateParkingTests"/>
+        </classes>
+    </test>
+
+    <test name="vehicle-services">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.create.CreateVehicleTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.create.CreateVehicleNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.retrieve.GetVehiclesTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.search.SearchVehicleTest"/>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.update.UpdateVehicleTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.documents.AutolibTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.documents.FuelCardTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.documents.InsuranceContractTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.vehicle.documents.LeaseContractTests"/>
+        </classes>
+    </test>
+
+    <test name="booking-services">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.booking.SearchFilteredTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.booking.CreateBookingTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.booking.GetBookingTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.booking.ReplaceBookingTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.booking.ReplaceBookingNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.booking.SearchBookingsTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.booking.FinishBookingTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.booking.ShortenedExtendTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.booking.CancelBookingTests"/>
+        </classes>
+    </test>
+
+    <test name="reports-services">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.report.CreateDamageReportTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.report.GetDamageReportDetailsTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.report.SearchDamageTests"/>
+        </classes>
+    </test>
+</suite>
