@@ -116,13 +116,16 @@ public class SortingMatchers {
         boolean result = false;
         try {
        System.out.println("this is my ttest"+ objects.get(0).getClass().getDeclaredField(fieldSortedBy)); 	
+       System.out.println("this is my ttest"+ objects.size()); 	
             for (int i = 0; i < objects.size() - 1; i++) {
                 Field fieldOne = objects.get(i).getClass().getDeclaredField(fieldSortedBy);
                 Field fieldTwo = objects.get(i + 1).getClass().getDeclaredField(fieldSortedBy);
                 fieldOne.setAccessible(true);
                 fieldTwo.setAccessible(true);
                 String valueOne = (String) fieldOne.get(objects.get(i));
+                System.out.println("this is value A"+ valueOne);
                 String valueTwo = (String) fieldTwo.get(objects.get(i + 1));
+                System.out.println("this is value B"+ valueTwo);
                 if (sortDirection.equals(SortDirection.ASC) & valueOne.compareToIgnoreCase(valueTwo) <= 0 ||
                         sortDirection.equals(SortDirection.DESC) & valueOne.compareToIgnoreCase(valueTwo) >= 0) {
                     result = true;
