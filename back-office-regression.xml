@@ -4,7 +4,7 @@
 
     <test name="back-users-services">
         <classes>
-            <class name="com.pitechplus.rcim.backofficetests.backuser.create.AddBackUserTests"/>
+           <!-- <class name="com.pitechplus.rcim.backofficetests.backuser.create.AddBackUserTests"/>
             <class name="com.pitechplus.rcim.backofficetests.backuser.create.AddBackUserNegativeTests"/>
             <class name="com.pitechplus.rcim.backofficetests.backuser.retrieve.GetAllBackUsersTests"/>
             <class name="com.pitechplus.rcim.backofficetests.backuser.retrieve.GetBackUserNegativeTests"/>
@@ -14,11 +14,12 @@
             <class name="com.pitechplus.rcim.backofficetests.backuser.suspend.SuspendBackUsersNegativeTests"/>
             <class name="com.pitechplus.rcim.backofficetests.backuser.suspend.SuspendBackUserTests"/>
             <class name="com.pitechplus.rcim.backofficetests.backuser.search.SearchBackUserTests"/>
-            <class name="com.pitechplus.rcim.backofficetests.backuser.search.SearchBackUsersNegativeTests"/>
+            <class name="com.pitechplus.rcim.backofficetests.backuser.search.SearchBackUsersNegativeTests"/>-->
+            <class name="com.pitechplus.rcim.nissan.be.members.search.MemberSearchTest"/>
         </classes>
     </test>
 
-    <test name="login">
+   <!--   <test name="login">
         <classes>
             <class name="com.pitechplus.rcim.backofficetests.login.LoginTests"/>
         </classes>
@@ -101,5 +102,5 @@
             <class name="com.pitechplus.rcim.backofficetests.report.GetDamageReportDetailsTests"/>
             <class name="com.pitechplus.rcim.backofficetests.report.SearchDamageTests"/>
         </classes>
-    </test>
+    </test>-->
 </suite>

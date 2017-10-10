@@ -115,6 +115,7 @@ public class SortingMatchers {
     private static boolean checkSortingByString(List objects, String fieldSortedBy, SortDirection sortDirection) {
         boolean result = false;
         try {
+       System.out.println("this is my ttest"+ objects.get(0).getClass().getDeclaredField(fieldSortedBy)); 	
             for (int i = 0; i < objects.size() - 1; i++) {
                 Field fieldOne = objects.get(i).getClass().getDeclaredField(fieldSortedBy);
                 Field fieldTwo = objects.get(i + 1).getClass().getDeclaredField(fieldSortedBy);
