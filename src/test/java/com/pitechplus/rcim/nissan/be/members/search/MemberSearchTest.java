@@ -87,7 +87,7 @@ public class MemberSearchTest extends BackendAbstract {
 
 	@DataProvider
 	public Object[][] searchMemberByField() {
-		Page AllResultPage = Page.builder().number(1).size(200).build();
+		Page AllResultPage = Page.builder().number(1).size(10).build();
 		MemberSearchDto sortByAsendingFirstname = new MemberSearchDto();
 		sortByAsendingFirstname.setSort(
 				MemberSorter.builder().direction(SortDirection.ASC).property(BackUserSearchProperty.FIRSTNAME).build());
