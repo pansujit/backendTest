@@ -69,7 +69,7 @@ public class MemberSearchTest extends BackendAbstract {
 
 	@Test(description = "This test verifies that calling search Member with sorting by firstname, lastname and email works accordingly", dataProvider = "searchMemberByField")
 	@TestInfo(expectedResult = "Response contains the Member sorted by firstname, lastname and email and the direction which you requested ( ASC / DESC )")
-	public void sortByRoleTest(MemberSearchDto memberSearchDto) {
+	public void memberSortByField(MemberSearchDto memberSearchDto) {
 		List<MemberDto> searchResults = nissanBeServices.searchMember(rcimTestData.getAdminToken(), memberSearchDto)
 				.getBody().getResults();
 		assertThat(searchResults, SortingMatchers.isListSortedByField(
@@ -78,7 +78,7 @@ public class MemberSearchTest extends BackendAbstract {
 
 	@Test(description = "This test verifies that calling search Member with sorting by VIP works", dataProvider = "searchMemberSortingByVIP")
 	@TestInfo(expectedResult = "Response contains the Member sorted by VIP and the direction which you requested ( ASC / DESC )")
-	public void sortByVIP(MemberSearchDto memberSearchDto) {
+	public void membersortByVIP(MemberSearchDto memberSearchDto) {
 		List<MemberDto> searchResults = nissanBeServices.searchMember(rcimTestData.getAdminToken(), memberSearchDto)
 				.getBody().getResults();
 		assertThat(searchResults, SortingMatchers.isListSortedByBoolean(
@@ -124,7 +124,7 @@ public class MemberSearchTest extends BackendAbstract {
 
 	@DataProvider
 	public Object[][] searchMemberSortingByVIP() {
-		Page AllResultPage = Page.builder().number(1).size(200).build();
+		Page AllResultPage = Page.builder().number(1).size(300).build();
 		MemberSearchDto sortByAsendingVIP = new MemberSearchDto();
 		sortByAsendingVIP.setSort(
 				MemberSorter.builder().direction(SortDirection.ASC).property(BackUserSearchProperty.VIP).build());
@@ -162,7 +162,7 @@ public class MemberSearchTest extends BackendAbstract {
 
 	@DataProvider
 	private Object[][] searchDataMemberWithCompanyId() {
-		Page oneResultPage = Page.builder().number(1).size(200).build();
+		Page oneResultPage = Page.builder().number(1).size(500).build();
 
 		MemberSearchDto searchByCompanyId = MemberSearchDto.builder()
 				.CompanyId((memberDto.getCompany().getId().toString())).page(oneResultPage).build();
