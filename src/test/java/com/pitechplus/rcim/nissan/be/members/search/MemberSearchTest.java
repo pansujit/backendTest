@@ -34,12 +34,9 @@ public class MemberSearchTest extends BackendAbstract {
 
 	@BeforeClass
 	public void createMember() {
-		System.out.println("sstarting");
-		System.out.println("the companu id is " + rcimTestData.getAdminSuperCompanyId().toString());
 		memberCreateDto = NissanDtoBuilders.buildMemberCreateDto(rcimTestData.getAdminSuperCompanyId().toString(),
 				configsService.createFile(rcimTestData.getSuperAdminToken(), DtoBuilders.buildFile()).getBody()
 						.getId());
-		System.out.println("the admin token is +" + rcimTestData.getAdminToken());
 		memberDto = nissanBeServices.createMember(rcimTestData.getAdminToken(), memberCreateDto).getBody();
 	}
 
@@ -49,7 +46,6 @@ public class MemberSearchTest extends BackendAbstract {
 		// the search DTO should be done
 		ResponseEntity<SearchMemberResponse> searchResult = nissanBeServices.searchMember(rcimTestData.getAdminToken(),
 				searchMemberxxx);
-		System.out.println("this bbody is " + searchResult.getBody().getResults().get(0));
 		MemberDto x = (searchResult.getBody().getResults().get(0));
 		x.setDrivingLicence(null);
 		memberDto.setDrivingLicence(null);
