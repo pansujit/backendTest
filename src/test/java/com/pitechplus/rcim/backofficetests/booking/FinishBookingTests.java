@@ -37,6 +37,8 @@ public class FinishBookingTests extends BackendAbstract {
         String memberToken = extractXAuthTokenFromResponse(mobileService.authUser(new Login(rcimTestData.getMemberDto().getLogin(),
                 rcimTestData.getMemberPassword())));
         mobileService.startBooking(memberToken, bookingId);
+     
+
     }
 
     @Test
@@ -77,7 +79,7 @@ public class FinishBookingTests extends BackendAbstract {
             //verify that error received from server is the correct one
             assertThat("Server did not throw correct error!", ExceptionMapper.mapException(exception, BackOfficeException.class),
                     ExceptionMatcher.isExpectedBackOfficeException(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.getReasonPhrase(),
-                            "No booking found for id " + invalidId, null));
+                          "No booking found for id " + invalidId, null));
         }
     }
 

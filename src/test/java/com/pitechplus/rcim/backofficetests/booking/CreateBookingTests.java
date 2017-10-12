@@ -35,11 +35,11 @@ public class CreateBookingTests extends BackendAbstract {
 
     @BeforeClass
     public void prepareBookingCreate() {
+    	// the start time of booking has been modified to work 
         bookingCreateDto = buildCreateBooking(rcimTestData.getMemberDto().getLogin(),
                 rcimTestData.getAutomationVehicle(), rcimTestData.getAutomationParking());
         cloningMachine = new Cloner();
     }
-
     @Test
     public void createBookingTest() {
         BookingDto bookingDto = bookingService.createBooking(rcimTestData.getSuperAdminToken(), bookingCreateDto).getBody();

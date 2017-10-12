@@ -451,7 +451,7 @@ public class DtoBuilders {
                 .vehicle(VehicleDto.builder()
                         .id(vehicleDto.getId()).build())
                 .start(DateLocationDto.builder()
-                        .date(LocalDateTime.now().minusHours(1).plusMinutes(10).withNano(0).toString() +
+                        .date(LocalDateTime.now().plusMinutes(10).withNano(0).toString() +
                                 ZoneId.of(parkingDto.getSite().getZoneId()).getRules().getOffset(Instant.now()).getId())
                         .address(parkingDto.getSite().getAddress())
                         .coordinates(parkingDto.getCoordinates())

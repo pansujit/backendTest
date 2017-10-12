@@ -42,8 +42,6 @@ public class MemberSearchTest extends BackendAbstract {
 
 	@Test(dataProvider = "searchDataMember")
 	public void searchMemberTest(MemberSearchDto searchMemberxxx) {
-		// This method should check the search member
-		// the search DTO should be done
 		ResponseEntity<SearchMemberResponse> searchResult = nissanBeServices.searchMember(rcimTestData.getAdminToken(),
 				searchMemberxxx);
 		MemberDto x = (searchResult.getBody().getResults().get(0));
@@ -61,7 +59,6 @@ public class MemberSearchTest extends BackendAbstract {
 		assertThat("Search by company id did not bring member!", searchResult.getBody().getResults().size(),
 				is(greaterThan(0)));
 		memberDto.setDrivingLicence(null);
-
 		assertThat("Search did not included added member", searchResult.getBody().getResults(), hasItem(memberDto));
 	}
 
@@ -162,7 +159,7 @@ public class MemberSearchTest extends BackendAbstract {
 
 	@DataProvider
 	private Object[][] searchDataMemberWithCompanyId() {
-		Page oneResultPage = Page.builder().number(1).size(500).build();
+		Page oneResultPage = Page.builder().number(1).size(300).build();
 
 		MemberSearchDto searchByCompanyId = MemberSearchDto.builder()
 				.CompanyId((memberDto.getCompany().getId().toString())).page(oneResultPage).build();
