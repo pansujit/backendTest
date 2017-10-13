@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 /**
  * Created by dgliga on 08.05.2017.
  */
+
 @Builder
 @NoArgsConstructor
 @EqualsAndHashCode

@@ -19,10 +19,13 @@ import com.pitechplus.rcim.backoffice.dto.common.PhoneNumber;
 import com.pitechplus.rcim.backoffice.dto.company.*;
 import com.pitechplus.rcim.backoffice.dto.report.*;
 import com.pitechplus.rcim.backoffice.dto.report.search.DamageSearchDto;
+import com.pitechplus.rcim.backoffice.dto.smartcard.SmartCardCreateDto;
+import com.pitechplus.rcim.backoffice.dto.smartcard.SmartCardDto;
 import com.pitechplus.rcim.backoffice.dto.supercompany.ContractDto;
 import com.pitechplus.rcim.backoffice.dto.supercompany.SuperCompanyConfigurationEditDto;
 import com.pitechplus.rcim.backoffice.dto.supercompany.SuperCompanyCreate;
 import com.pitechplus.rcim.backoffice.dto.vehicle.*;
+
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.BeanUtils;
@@ -553,6 +556,40 @@ public class DtoBuilders {
                 .area(damageReportContextDto.getStartDamageReport().getReports().iterator().next().getArea())
                 .type(damageReportContextDto.getStartDamageReport().getReports().iterator().next().getType())
                 .build();
+    }
+    
+    /**
+     * This method is used to create a CompanyCreateDto object with valid data
+     *@param login email of the existing member
+     * @param superCompanyId value which you want the object field with same name to have
+     * @return SmartCardCreateDto object with all fields having valid values
+     */
+    public static SmartCardCreateDto buildSmartCardCreate(String superCompanyId,String login) {
+        return SmartCardCreateDto.builder().protocol(Protocol.ISO14443A_4).companyId(superCompanyId)
+        		.userLogin(login).
+        		cardId(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 16))
+        		.build();
+
+    }
+    
+    /**
+     * This method builds a SmartCardDto with given property
+     *
+     * @param smartcardDto this should be SmartCardDto object
+     * @param superCompanyId  this should be string of the given super company 
+     * @param login this should be string and is should an email.
+     * @return CompanyDto object with properties copied from CompanyCreateDto
+     */
+    public static SmartCardDto buildExpectedCreateSmartDto(SmartCardDto smartcardDto, String superCompanyId,String login) {
+    		SmartCardDto smartCardDtoTest = new SmartCardDto();
+        BeanUtils.copyProperties(smartcardDto, smartCardDtoTest);
+        com.pitechplus.rcim.backoffice.dto.smartcard.MemberDto  memberdto=smartCardDtoTest.getUser();
+        memberdto.setLogin(login);
+        com.pitechplus.rcim.backoffice.dto.smartcard.CompanyDto y=smartCardDtoTest.getCompany();
+        y.setId(superCompanyId);
+        smartCardDtoTest.setUser(memberdto);
+        smartCardDtoTest.setCompany(y);
+       return smartCardDtoTest;
     }
 
 
