@@ -44,11 +44,14 @@ public class CreateDamageReportTests extends BackendAbstract {
 
     @BeforeClass
     public void startBooking() {
+
         bookingId = bookingService.createBooking(rcimTestData.getSuperAdminToken(),
                 buildCreateBooking(rcimTestData.getMemberDto().getLogin(), rcimTestData.getAutomationVehicle(),
                         rcimTestData.getAutomationParking())).getBody().getId();
+        System.out.println("tdtest"+bookingId);
         memberToken = extractXAuthTokenFromResponse(mobileService.authUser(new Login(rcimTestData.getMemberDto().getLogin(),
                 rcimTestData.getMemberPassword())));
+
         mobileService.startBooking(memberToken, bookingId);
     }
 

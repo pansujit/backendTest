@@ -1,5 +1,7 @@
 package com.pitechplus.rcim.nissan.be.nissanservices;
 
+import com.pitechplus.nissan.be.nissanDto.membermigrate.MemberMigrationCreateDto;
+import com.pitechplus.nissan.be.nissanDto.membermigrate.MemberMigrationDto;
 import com.pitechplus.qautils.restutils.RestExchangeInfo;
 import com.pitechplus.qautils.restutils.RestTemplateUtils;
 import com.pitechplus.rcim.backoffice.data.enums.ApplicationType;
@@ -55,8 +57,9 @@ public class NissanBeServices {
 
 	@Value("${member.search}")
 	private String searchMember;
-
-
+	@Value("${member.migration}")
+	private String memberMigration;
+	
 
 	private RestTemplateUtils restTemplateUtils = new RestTemplateUtils(15000, 15000);
 
@@ -193,6 +196,21 @@ public class NissanBeServices {
 				.httpMethod(HttpMethod.POST)
 				.requestBody(searchGroups)
 				.response(GroupResultDto.class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+	}
+	
+	public ResponseEntity<MemberMigrationDto> memberMigration(String xAuthToken, MemberMigrationCreateDto memberMigrationCreate) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity<MemberMigrationCreateDto> memberCreateDtoHttpEntity = new HttpEntity<>(memberMigrationCreate, headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: Migrate member")
+				.url(gwAdminBaseUrl + memberMigration)
+				.httpMethod(HttpMethod.POST)
+				.requestBody(memberCreateDtoHttpEntity)
+				.response(MemberMigrationDto.class)
 				.build();
 		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
 	}

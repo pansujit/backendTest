@@ -1,5 +1,6 @@
 package com.pitechplus.rcim.nissan.be.nissanutils.nissanbuilders;
 
+import com.pitechplus.nissan.be.nissanDto.membermigrate.MemberMigrationCreateDto;
 import com.pitechplus.qautils.randomgenerators.PersonalInfoGenerator;
 import com.pitechplus.rcim.backoffice.data.RcimTestData;
 import com.pitechplus.rcim.backoffice.dto.company.ParkingDto;
@@ -181,6 +182,9 @@ public class NissanDtoBuilders {
                 .endDate(LocalDate.now().plusMonths(contractDuration).toString()).build();
     }
 
+    public static MemberMigrationCreateDto memberMigrationCreateDto(String anotherCompanyId, String memberId) {
+    		return MemberMigrationCreateDto.builder().newCompanyId(anotherCompanyId).memberId(memberId).build();
+    }
 
     private static <T extends Enum<?>> T randomEnum(Class<T> clazz) {
         SecureRandom random = new SecureRandom();

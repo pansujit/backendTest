@@ -18,7 +18,11 @@
             <class name="com.pitechplus.rcim.nissan.be.members.search.MemberSearchTest"/>
         </classes>
     </test>
-
+    <test name="migrate-member">
+        <classes>
+            <class name="com.pitechplus.rcim.nissan.be.membermigrate.MigrateMemberTest"/>
+        </classes>
+    </test>
     <test name="login">
         <classes>
             <class name="com.pitechplus.rcim.backofficetests.login.LoginTests"/>
