@@ -23,6 +23,11 @@
             <class name="com.pitechplus.rcim.nissan.be.membermigrate.MigrateMemberTest"/>
         </classes>
     </test>
+        <test name="smart-card">
+        <classes>
+            <class name="com.pitechplus.rcim.backofficetests.smartcard.create.CreateSmartCardTest"/>
+        </classes>
+    </test>
     <test name="login">
         <classes>
             <class name="com.pitechplus.rcim.backofficetests.login.LoginTests"/>

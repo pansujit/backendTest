@@ -36,7 +36,9 @@ public enum ValidationError {
     START_MAY_NOT_BE_NULL("start in ", ErrorMessages.MAY_NOT_BE_NULL),
     RESERVED_SEATS_MAY_NOT_BE_NULL("reservedSeats in ", ErrorMessages.MAY_NOT_BE_NULL),
     EXTERNAL_CLEANLINESS_MAY_NOT_BE_NULL("externalCleanliness in ", ErrorMessages.MAY_NOT_BE_NULL),
-    INTERNAL_CLEANLINESS_MAY_NOT_BE_NULL("internalCleanliness in ", ErrorMessages.MAY_NOT_BE_NULL);
+    INTERNAL_CLEANLINESS_MAY_NOT_BE_NULL("internalCleanliness in ", ErrorMessages.MAY_NOT_BE_NULL),
+	PROTOCOL_MAY_NOT_BE_NULL("protocol in ",ErrorMessages.MAY_NOT_BE_NULL),
+	CARDID_MAY_NOT_BE_EMPTY("cardId in ",ErrorMessages.MAY_NOT_BE_EMPTY);
 
     private final String field;
     private final String errorMessage;

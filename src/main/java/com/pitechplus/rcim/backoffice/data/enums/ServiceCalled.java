@@ -10,7 +10,8 @@ public enum ServiceCalled {
     SUB_COMPANY_CREATE("subCompanyEditDto"), SUB_COMPANY_UPDATE("subCompanyEditDto"), CONTRACT_CREATE("contractCreateDto"),
     PARKING_CREATE("parkingCreateDto"), PARKING_UPDATE("parkingUpdateDto"),
     MEMBER_CREATE("memberCreateDto"), MEMBER_UPDATE("memberUpdateDto"), SEARCH_BOOKING("searchBookingDto"),
-    BOOKING_CREATE("bookingCreateDto"), SEARCH_GROUPS("groupQueryDto"), DAMAGE_CREATE("damageReportCreateDto");
+    BOOKING_CREATE("bookingCreateDto"), SEARCH_GROUPS("groupQueryDto"), DAMAGE_CREATE("damageReportCreateDto"),
+    SMART_CARD_CREATE_DTO("smartcardCreateDto");
 
     private String value;
 

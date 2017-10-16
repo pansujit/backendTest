@@ -571,6 +571,41 @@ public class DtoBuilders {
         		.build();
 
     }
+    /**
+     * This method is used to create a CompanyCreateDto object with valid data
+     *@param login email of the existing member
+     * @param superCompanyId value which you want the object field with same name to have
+     * @return SmartCardCreateDto object with all fields having valid values
+     */
+    public static SmartCardCreateDto buildSmartCardCreateMissingParameter(String superCompanyId,String login,String protocol,
+    		String cardId) {
+    		String cardIDnew= new String();
+    		Protocol protocolNew;
+    		if(cardId==null) {
+    			cardIDnew=null;
+    		}
+    		else
+    		{
+    			cardIDnew=UUID.randomUUID().toString().replaceAll("-", "").substring(0, 16);
+    		}
+    		
+    		
+    		if(protocol==null) {
+    			protocolNew=null;
+    		}
+    		else
+    		{
+    			protocolNew =Protocol.ISO14443A_4;
+    		}
+    		
+    		
+    	
+        return SmartCardCreateDto.builder().protocol(protocolNew).companyId(superCompanyId)
+        		.userLogin(login).
+        		cardId(cardIDnew)
+        		.build();
+
+    }
     
     /**
      * This method builds a SmartCardDto with given property
