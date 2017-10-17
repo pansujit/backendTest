@@ -15,9 +15,19 @@
             <class name="com.pitechplus.rcim.backofficetests.backuser.suspend.SuspendBackUserTests"/>
             <class name="com.pitechplus.rcim.backofficetests.backuser.search.SearchBackUserTests"/>
             <class name="com.pitechplus.rcim.backofficetests.backuser.search.SearchBackUsersNegativeTests"/>
-            <class name="com.pitechplus.rcim.nissan.be.members.search.MemberSearchTest"/>
         </classes>
     </test>
+        <test name="member-service">
+        <classes>
+            <class name="com.pitechplus.rcim.nissan.be.members.search.MemberSearchTest"/>
+            <class name="com.pitechplus.rcim.nissan.be.members.retrieve.GetMembersTests"/>
+            <class name="com.pitechplus.rcim.nissan.be.members.create.AddMembersTests"/>
+            <class name="com.pitechplus.rcim.nissan.be.members.create.AddMembersNegativeTests"/>
+            <class name="com.pitechplus.rcim.nissan.be.members.update.UpdateMembersTests"/>
+            <class name="com.pitechplus.rcim.nissan.be.members.update.UpdateMembersNegativeTests"/>
+        </classes>
+    </test>
+    
     <test name="migrate-member">
         <classes>
             <class name="com.pitechplus.rcim.nissan.be.membermigrate.MigrateMemberTest"/>
