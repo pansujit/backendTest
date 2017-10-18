@@ -76,15 +76,15 @@ public class SearchSmartCardsTest extends BackendAbstract {
 		assertThat("this is failed test",x.getBody(), is(smartcardDto));
 		
 	}
-	@Test(description="This test verifies search smartcard by its smart card Id")
+	@Test(description="This test verifies search smartcard by its smartcard Id")
 	@TestInfo(expectedResult="Only the smartcard with the given smartcard Id should be displayed")
 	public void searchSmartCardBySmartCardId() {
-		ResponseEntity<SmartCardDto> x=smartCardService.getSmartCardById(rcimTestData.getSuperAdminToken(), smartcardDto.getId());
+		ResponseEntity<SmartCardDto> x=smartCardService.getSmartCardBySmartcardId(rcimTestData.getSuperAdminToken(), smartcardDto.getId());
 		assertThat("this is failed test",x.getBody(), is(smartcardDto));
 		
 	}
 	
-	@Test(dataProvider="searchByOneField",description="This method search for smart card usig one field at a time")
+	@Test(dataProvider="searchByOneField",description="This method search for smart card using one field at a time")
 	@TestInfo(expectedResult="Only the smartcards with given information should be displayed")
 	public void searchSmartCardByOneField(SmartcardQueryDto searchSmartCard) {
 		SearchResultDto x=smartCardService.searchSmartCard(rcimTestData.getSuperAdminToken(), searchSmartCard).getBody();
