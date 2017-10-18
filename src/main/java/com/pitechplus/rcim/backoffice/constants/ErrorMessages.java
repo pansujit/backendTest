@@ -26,6 +26,7 @@ public class ErrorMessages {
     public static final String ROLE_IS_INVALID = "";
     public static final String LOCALE_IS_INVALID = "";
     public static final String NOT_FOUND="Not Found";
+    public static final String EXPIRED_AUTHENTICATION_TOKEN="Expired authentication token";
 
     
 }

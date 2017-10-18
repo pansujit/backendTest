@@ -113,6 +113,7 @@ public class SortingMatchers {
      * @return true or false depending if the list is sorted or not by the field in the sort direction expected
      */
     private static boolean checkSortingByString(List objects, String fieldSortedBy, SortDirection sortDirection) {
+
         boolean result = false;
         try { 	
             for (int i = 0; i < objects.size() - 1; i++) {
@@ -121,7 +122,9 @@ public class SortingMatchers {
                 fieldOne.setAccessible(true);
                 fieldTwo.setAccessible(true);
                 String valueOne = (String) fieldOne.get(objects.get(i));
+                
                 String valueTwo = (String) fieldTwo.get(objects.get(i + 1));
+                
                 if (sortDirection.equals(SortDirection.ASC) & valueOne.compareToIgnoreCase(valueTwo) <= 0 ||
                         sortDirection.equals(SortDirection.DESC) & valueOne.compareToIgnoreCase(valueTwo) >= 0) {
                     result = true;

@@ -21,6 +21,7 @@ import com.pitechplus.rcim.backoffice.dto.report.*;
 import com.pitechplus.rcim.backoffice.dto.report.search.DamageSearchDto;
 import com.pitechplus.rcim.backoffice.dto.smartcard.SmartCardCreateDto;
 import com.pitechplus.rcim.backoffice.dto.smartcard.SmartCardDto;
+import com.pitechplus.rcim.backoffice.dto.smartcard.SmartCardUpdateDto;
 import com.pitechplus.rcim.backoffice.dto.supercompany.ContractDto;
 import com.pitechplus.rcim.backoffice.dto.supercompany.SuperCompanyConfigurationEditDto;
 import com.pitechplus.rcim.backoffice.dto.supercompany.SuperCompanyCreate;
@@ -625,6 +626,29 @@ public class DtoBuilders {
         smartCardDtoTest.setUser(memberdto);
         smartCardDtoTest.setCompany(y);
        return smartCardDtoTest;
+    }
+    
+    public static SmartCardUpdateDto updateSmartCardBuild(String superCompanyId,String login,Protocol protocol
+    		,String id,String cardId) {
+        return SmartCardUpdateDto.builder()
+        		.companyId(superCompanyId)
+        		.UserLogin(login)
+        		.protocol(protocol)
+        		.id(id)
+        		.cardId(cardId)
+        		.build();
+
+    }
+    
+    public static SmartCardDto buildExpectedUpdateSmartCardDto(SmartCardDto smartCardDto, SmartCardDto x ) {
+    	SmartCardDto v = new SmartCardDto();
+        BeanUtils.copyProperties(smartCardDto, v);
+    v.getCompany().setId(x.getCompany().getId());
+    v.setCardId(x.getCardId());
+    v.setProtocol(x.getProtocol());
+    v.getUser().setLogin(x.getUser().getLogin());
+    v.setId(x.getId());
+        return v;
     }
 
 

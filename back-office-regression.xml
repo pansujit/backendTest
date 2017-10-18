@@ -35,7 +35,9 @@
     </test>
         <test name="smart-card">
         <classes>
-            <class name="com.pitechplus.rcim.backofficetests.smartcard.create.CreateSmartCardTest"/>
+            <class name="com.pitechplus.rcim.backofficetests.smartcard.CreateSmartCardTest"/>
+            <class name="com.pitechplus.rcim.backofficetests.smartcard.SearchSmartCardsTest"/>
+            <class name="com.pitechplus.rcim.backofficetests.smartcard.UpdateSmartCardsTest"/>
         </classes>
     </test>
     <test name="login">

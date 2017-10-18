@@ -11,7 +11,7 @@ public enum ServiceCalled {
     PARKING_CREATE("parkingCreateDto"), PARKING_UPDATE("parkingUpdateDto"),
     MEMBER_CREATE("memberCreateDto"), MEMBER_UPDATE("memberUpdateDto"), SEARCH_BOOKING("searchBookingDto"),
     BOOKING_CREATE("bookingCreateDto"), SEARCH_GROUPS("groupQueryDto"), DAMAGE_CREATE("damageReportCreateDto"),
-    SMART_CARD_CREATE_DTO("smartcardCreateDto");
+    SMART_CARD_CREATE_DTO("smartcardCreateDto"),SMART_CARD_UPDATE_DTO("smartcardUpdateDto");
 
     private String value;
 
