@@ -9,8 +9,12 @@ import com.pitechplus.rcim.backoffice.dto.search.supercompany.SuperCompanySearch
 import com.pitechplus.rcim.backoffice.dto.search.supercompany.SuperCompanySearchResult;
 import com.pitechplus.rcim.backoffice.utils.exceptions.BackOfficeException;
 import com.pitechplus.rcim.nissan.be.nissandto.groups.*;
+import com.pitechplus.rcim.nissan.be.nissandto.members.CommentCreateDto;
+import com.pitechplus.rcim.nissan.be.nissandto.members.CommentResponseDto;
 import com.pitechplus.rcim.nissan.be.nissandto.members.MemberCreateDto;
 import com.pitechplus.rcim.nissan.be.nissandto.members.MemberDto;
+import com.pitechplus.rcim.nissan.be.nissandto.members.MemberEmailUpdateDto;
+import com.pitechplus.rcim.nissan.be.nissandto.members.MemberImpersonateResultDto;
 import com.pitechplus.rcim.nissan.be.nissandto.members.MemberSearchDto;
 import com.pitechplus.rcim.nissan.be.nissandto.members.MemberUpdateDto;
 import com.pitechplus.rcim.nissan.be.nissandto.members.SearchMemberResponse;
@@ -57,9 +61,31 @@ public class NissanBeServices {
 
 	@Value("${member.search}")
 	private String searchMember;
+	
 	@Value("${member.migration}")
 	private String memberMigration;
 	
+	@Value("${member.suspend}")
+	private String suspendMember;
+	
+	@Value("${member.unsuspend}")
+	private String unsuspendMember;
+	
+	@Value("${member.change.email}")
+	private String changeMemberEmail;
+	
+	@Value("${member.profile.approve}")
+	private String memberProfileApprove;
+	
+	@Value("${member.profile.reject}")
+	private String memberProfileReject;
+	
+	@Value("${member.impersonate}")
+	private String memberImpersonate;
+	
+	@Value("${member.comment}")
+	private String commentmember;
+
 
 	private RestTemplateUtils restTemplateUtils = new RestTemplateUtils(15000, 15000);
 
@@ -214,5 +240,138 @@ public class NissanBeServices {
 				.build();
 		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
 	}
+		
+	public ResponseEntity<CommentResponseDto> postMemberComment(String xAuthToken, CommentCreateDto commentCreateDto,String memberId) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity commentDtoHttpEntity = new HttpEntity<>(commentCreateDto, headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: create comment for  member :" + memberId)
+				.url(gwAdminBaseUrl + commentmember)
+				.httpMethod(HttpMethod.POST)
+				.uriVariables(memberId)
+				.requestBody(commentDtoHttpEntity)
+				.response(CommentResponseDto.class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+		
+	}
+	public ResponseEntity<CommentResponseDto[]> getMemberCommment(String xAuthToken,String memberId) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity commentDtoHttpEntity = new HttpEntity<>(headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: get comment of  member :" + memberId)
+				.url(gwAdminBaseUrl + commentmember)
+				.httpMethod(HttpMethod.GET)
+				.requestBody(commentDtoHttpEntity)
+				.uriVariables(memberId)
+				.response(CommentResponseDto[].class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+		
+	}
+	public ResponseEntity<MemberImpersonateResultDto> impersonateMember(String xAuthToken,String memberId) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity commentDtoHttpEntity = new HttpEntity<>(headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: Migrate member")
+				.url(gwAdminBaseUrl + memberImpersonate)
+				.httpMethod(HttpMethod.GET)
+				.uriVariables(memberId)
+				.requestBody(commentDtoHttpEntity)
+				.response(MemberImpersonateResultDto.class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+		
+		
+	}
+	public ResponseEntity<Object> profileApprove(String xAuthToken,String memberId) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity commentDtoHttpEntity = new HttpEntity<>(headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: approving the member :"+ memberId)
+				.url(gwAdminBaseUrl + memberProfileApprove)
+				.httpMethod(HttpMethod.PUT)
+				.uriVariables(memberId)
+				.requestBody(commentDtoHttpEntity)
+				.response(Object.class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+		
+	}
+	public ResponseEntity<Object> profileReject(String xAuthToken,CommentCreateDto commentCreateDto,String memberId) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity commentDtoHttpEntity = new HttpEntity<>(commentCreateDto,headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: Rejecting the member :"+ memberId)
+				.url(gwAdminBaseUrl + memberProfileReject)
+				.httpMethod(HttpMethod.PUT)
+				.uriVariables(memberId)
+				.requestBody(commentDtoHttpEntity)
+				.response(Object.class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+		
+	}
+	public ResponseEntity<MemberDto> memberSuspend(String xAuthToken,CommentCreateDto commentCreateDto,String memberId) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity commentDtoHttpEntity = new HttpEntity<>(commentCreateDto,headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: suspending member :"+ memberId)
+				.url(gwAdminBaseUrl + suspendMember)
+				.httpMethod(HttpMethod.PUT)
+				.uriVariables(memberId)
+				.requestBody(commentDtoHttpEntity)
+				.response(MemberDto.class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+		
+	}
+	public ResponseEntity<MemberDto> memberUnsuspend(String xAuthToken,String memberId) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity commentDtoHttpEntity = new HttpEntity<>(headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: unsuspending member :"+ memberId)
+				.url(gwAdminBaseUrl + unsuspendMember)
+				.httpMethod(HttpMethod.PUT)
+				.uriVariables(memberId)
+				.requestBody(commentDtoHttpEntity)
+				.response(MemberDto.class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+		
+	}
+	public ResponseEntity<MemberDto> changeEmail(String xAuthToken,MemberEmailUpdateDto memberEmailUpdateDto,String memberId) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("X-AUTH-TOKEN", xAuthToken);
+		headers.set("x-app-origin", ApplicationType.GLIDE_BO.toString());
+		HttpEntity commentDtoHttpEntity = new HttpEntity<>(memberEmailUpdateDto,headers);
+		RestExchangeInfo restExchangeInfo = RestExchangeInfo.builder()
+				.requestDescription("Call service: changing the email of member :"+ memberId)
+				.url(gwAdminBaseUrl + changeMemberEmail)
+				.httpMethod(HttpMethod.PUT)
+				.uriVariables(memberId)
+				.requestBody(commentDtoHttpEntity)
+				.response(MemberDto.class)
+				.build();
+		return restTemplateUtils.makeExchange(restExchangeInfo, BackOfficeException.class);
+	}
+	public void passwordReset(String xAuthToken,String memberId) {
+		
+	}
+	
 
 }

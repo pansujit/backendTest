@@ -185,6 +185,12 @@ public class NissanDtoBuilders {
     public static MemberMigrationCreateDto memberMigrationCreateDto(String anotherCompanyId, String memberId) {
     		return MemberMigrationCreateDto.builder().newCompanyId(anotherCompanyId).memberId(memberId).build();
     }
+    public static CommentCreateDto memberCommentCreateDto(String data) {
+    		return CommentCreateDto.builder().body(data).build();
+    }
+    public static MemberEmailUpdateDto updateEmailCreateDto(String data) {
+		return MemberEmailUpdateDto.builder().login(data).build();
+}
 
     private static <T extends Enum<?>> T randomEnum(Class<T> clazz) {
         SecureRandom random = new SecureRandom();

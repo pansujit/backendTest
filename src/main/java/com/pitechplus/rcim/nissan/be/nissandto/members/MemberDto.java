@@ -64,5 +64,5 @@ public class MemberDto {
     String profession;
     String description;
     GroupMembershipViewDto groupMembership;
-    List<CommentDto> comments;
+    List<CommentResponseDto> comments;
 }

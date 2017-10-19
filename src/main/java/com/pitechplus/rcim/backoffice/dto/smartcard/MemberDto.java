@@ -9,7 +9,7 @@ import com.pitechplus.rcim.nissan.be.nissandata.nissanenums.MaritalStatus;
 import com.pitechplus.rcim.nissan.be.nissandata.nissanenums.ReviewStatus;
 import com.pitechplus.rcim.nissan.be.nissandata.nissanenums.SexDto;
 import com.pitechplus.rcim.nissan.be.nissandto.groups.GroupMembershipViewDto;
-import com.pitechplus.rcim.nissan.be.nissandto.members.CommentDto;
+import com.pitechplus.rcim.nissan.be.nissandto.members.CommentResponseDto;
 import com.pitechplus.rcim.nissan.be.nissandto.members.DocumentaryEvidenceDto;
 import com.pitechplus.rcim.nissan.be.nissandto.members.DrivingLicenceDto;
 import com.pitechplus.rcim.nissan.be.nissandto.members.EnterpriseDto;
@@ -70,5 +70,5 @@ public class MemberDto {
     String profession;
     String description;
     GroupMembershipViewDto groupMembership;
-    List<CommentDto> comments;
+    List<CommentResponseDto> comments;
 }
