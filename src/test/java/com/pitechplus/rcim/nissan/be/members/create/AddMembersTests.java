@@ -82,7 +82,7 @@ public class AddMembersTests extends BackendAbstract {
        ResponseEntity<Object> response=nissanBeServices.profileReject(rcimTestData.getSuperAdminToken(), 
     			NissanDtoBuilders.memberCommentCreateDto("hello"),responseMemberDto.getId().toString());
 
-    	assertThat("The response contains null token",response.getStatusCodeValue(),is(204));
+    	assertThat("The response doesnot contains the success code",response.getStatusCodeValue(),is(204));
 
     }
     @Test(priority=6,dependsOnMethods="createMemberTest")
@@ -90,21 +90,21 @@ public class AddMembersTests extends BackendAbstract {
        ResponseEntity<Object> response=nissanBeServices.profileApprove(rcimTestData.getSuperAdminToken(), 
     			responseMemberDto.getId().toString());
 
-    	assertThat("The response contains null token",response.getStatusCodeValue(),is(204));
+    	assertThat("The response doesnot contains the success code",response.getStatusCodeValue(),is(204));
 
     }
     @Test(priority=7,dependsOnMethods="createMemberTest")
     public void suspendMemberTest() {
        MemberDto response=nissanBeServices.memberSuspend(rcimTestData.getSuperAdminToken(),NissanDtoBuilders.memberCommentCreateDto("hello"),
     			responseMemberDto.getId().toString()).getBody();
-    	assertThat("The response contains null token",response.getSuspended(),is(Boolean.TRUE));
+    	assertThat("The response contains The suspended member is false",response.getSuspended(),is(Boolean.TRUE));
 
     }
     @Test(priority=8,dependsOnMethods= {"createMemberTest","suspendMemberTest"})
     public void unsuspendMemberTest() {
        MemberDto response=nissanBeServices.memberUnsuspend(rcimTestData.getSuperAdminToken(), 
     			responseMemberDto.getId().toString()).getBody();
-    	assertThat("The response contains null token",response.getSuspended(),is(Boolean.FALSE));
+    	assertThat("The response contains The suspended member is true",response.getSuspended(),is(Boolean.FALSE));
 
     }
     
@@ -116,7 +116,7 @@ public class AddMembersTests extends BackendAbstract {
        MemberDto response=nissanBeServices.changeEmail(rcimTestData.getSuperAdminToken(),NissanDtoBuilders.updateEmailCreateDto(email),
     		   responseMemberDto.getId().toString()).getBody(); 
        responseMemberDto.setLogin(email);	
-    	assertThat("The response contains null token",response.getLogin(),is(email));
+    	assertThat("The response contains the old email, update is not done",response.getLogin(),is(email));
 
     }
     
