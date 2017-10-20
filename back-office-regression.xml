@@ -28,6 +28,12 @@
         </classes>
     </test>
     
+     <test name="color-service">
+        <classes>
+            <class name="com.pitectplus.rcim.backoffice.color.search.ColorTest"/>
+        </classes>
+    </test>
+    
     <test name="migrate-member">
         <classes>
             <class name="com.pitechplus.rcim.nissan.be.membermigrate.MigrateMemberTest"/>

@@ -69,6 +69,11 @@ public abstract class BackendAbstract extends AbstractTestNGSpringContextTests {
     
     @Autowired
     protected SmartCardService smartCardService;
+    
+    @Autowired
+    protected ColorService colorService;
+    
+    
 
     @BeforeTest(alwaysRun = true)
     public void retryAnalyzerSetup(ITestContext context) throws Exception {
