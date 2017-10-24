@@ -28,11 +28,11 @@
         </classes>
     </test>
     
-     <test name="color-service">
+     <!--  <test name="color-service">
         <classes>
             <class name="com.pitectplus.rcim.backoffice.color.search.ColorTest"/>
         </classes>
-    </test>
+    </test>-->
     
     <test name="migrate-member">
         <classes>
