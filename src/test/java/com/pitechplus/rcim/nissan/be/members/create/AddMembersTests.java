@@ -44,7 +44,7 @@ public class AddMembersTests extends BackendAbstract {
         assertThat("Information given on response to add member does not reflect request !",
                 responseMemberDto, is(expectedMemberDto));
     }
-    @Test(priority=2,dependsOnMethods="createMemberTest")
+  /*  @Test(priority=2,dependsOnMethods="createMemberTest")
     public void postCommentTest() {
     	CommentCreateDto x=NissanDtoBuilders.memberCommentCreateDto(ranodmString);
     	CommentResponseDto responseComment=nissanBeServices.postMemberComment(rcimTestData.getSuperAdminToken(), x, 
@@ -118,7 +118,7 @@ public class AddMembersTests extends BackendAbstract {
        responseMemberDto.setLogin(email);	
     	assertThat("The response contains the old email, update is not done",response.getLogin(),is(email));
 
-    }
+    }*/
     
     
     
