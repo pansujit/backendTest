@@ -98,6 +98,7 @@ public class UpdateSuperCompanyNegativeTests extends BackendAbstract {
             Assert.fail("Super Company was updated with invalid super company id!");
         } catch (HttpStatusCodeException exception) {
             //verify that error received from server is the correct one
+       
             assertThat("Server did not throw correct error!", ExceptionMapper.mapException(exception, BackOfficeException.class),
                     ExceptionMatcher.isExpectedBackOfficeException(HttpStatus.NOT_FOUND, HttpStatus.NOT_FOUND.getReasonPhrase(),
                             NO_COMPANY_FOUND + invalidId, null));

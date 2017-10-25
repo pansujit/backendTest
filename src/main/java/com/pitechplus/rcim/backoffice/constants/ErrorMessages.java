@@ -7,7 +7,7 @@ public class ErrorMessages {
 
     public static final String INVALID_AUTHENTICATION_TOKEN = "Invalid authentication token";
     public static final String NO_BACK_USER_FOUND = "No back profile found for id ";
-    public static final String NO_COMPANY_FOUND = "No company found for id : ";
+    public static final String NO_COMPANY_FOUND = "No company found for id ";
     public static final String NO_SUB_COMPANY_FOUND = "No sub-company found for id : ";
     public static final String MAY_NOT_BE_EMPTY = " may not be empty";
     public static final String MAY_NOT_BE_NULL = " may not be null";
