@@ -54,13 +54,13 @@ public class SearchSmartCardsTest extends BackendAbstract {
 		
 	}
 	
-	/*@Test(description="This test verifies get all smartcard method")
+	@Test(description="This test verifies get all smartcard method")
 	@TestInfo(expectedResult="All the smartcards should be displayed")
 	public void getallSmartCardsTest() throws JsonParseException, JsonMappingException, IOException {
 		SmartCardDto[] x=smartCardService.getAllSmartCard(rcimTestData.getSuperAdminToken()).getBody();
 		List<SmartCardDto> y=Arrays.asList(x);
 		assertThat("The created new item is in not in the list",y,hasItem(smartcardDto));
-	}*/
+	}
 	@Test(description="This test verifies search smartcard by its user login")
 	@TestInfo(expectedResult="Only the smartcard with the given login/email should be displayed")
 	public void searchSmartCardByUserLogin() {
@@ -69,7 +69,7 @@ public class SearchSmartCardsTest extends BackendAbstract {
 		
 	}
 	
-	/*@Test(description="This test verifies search smart card by its cardId")
+	@Test(description="This test verifies search smart card by its cardId")
 	@TestInfo(expectedResult="Only the smartcard with the given cardid should be displayed")
 	public void searchSmartCardBycardId() {
 		ResponseEntity<SmartCardDto> x=smartCardService.getSmartCardById(rcimTestData.getSuperAdminToken(), smartcardDto.getCardId());
@@ -204,7 +204,7 @@ public class SearchSmartCardsTest extends BackendAbstract {
 			{searchAndSortAscendingByProtocol},
 			{searchAndSortDescendingByProtocol}
 		};
-	}*/
+	}
 	
 	
 }
