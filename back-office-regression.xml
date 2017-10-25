@@ -30,7 +30,7 @@
     
      <!--  <test name="color-service">
         <classes>
-            <class name="com.pitectplus.rcim.backoffice.color.search.ColorTest"/>
+            <class name="com.pitectplus.rcim.backoffice.color.ColorTest"/>
         </classes>
     </test>-->
     

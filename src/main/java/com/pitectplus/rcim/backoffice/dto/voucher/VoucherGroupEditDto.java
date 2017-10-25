@@ -29,7 +29,7 @@ public class VoucherGroupEditDto {
 	String name;
 	String prefix;
 	Type type;
-	VoucherRuleParameterDto[] voucherRuleParameterDto;
+	VoucherRuleParameterDto[] rules;
 	
 
 }

@@ -73,6 +73,9 @@ public abstract class BackendAbstract extends AbstractTestNGSpringContextTests {
     @Autowired
     protected ColorService colorService;
     
+    @Autowired
+    protected VoucherService voucherService;
+    
     
 
     @BeforeTest(alwaysRun = true)
